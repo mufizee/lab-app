@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+
+.receipt{
+	font-family:"Courier New", Courier, monospace;
+	font-size:13px;
+	color:#333;
+	width: 350px;
+	border-bottom-width: thin;
+	border-bottom-style: dashed;
+	border-bottom-color: #333;
+}
+.rleft{
+	width: 100px;
+	float:left;
+}
+.rright{
+	width: 250px;
+	float:left;
+	text-align:right;
+}
+.rtitle{
+	text-align:center;
+}
+.rmain{
+	font-weight:bold;
+}
+.rtextbig{
+	font-size:18px;
+	font-weight:bold;
+}
+.rdiscribe{
+	width: 200px;
+	float:left;
+}
+.rquantity{
+	width: 50px;
+	float:left;
+}
+.ramount{
+	width: 100px;
+	float:left;
+}
+.link{
+	font-size:8px;
+	text-decoration: none;
+	color:#CCC;
+}

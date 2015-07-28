@@ -1,0 +1,256 @@
+@charset "utf-8";
+/* CSS Document */
+
+body, div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, img, form, fieldset, blockquote, a {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}
+
+body{
+	background: #FFF;
+	font-family: Helvetica, Arial, Sans-Serif;
+	font-size: 12px;
+	margin: 0;
+}
+#loading {display:none;}/*hide the loading element by default*/
+
+input[type=text],input[type=password] {
+	height: 30px;
+	width: 250px;
+	border: 0.5px solid #3f3f40;
+}
+
+/*.textbox2{
+	height: 14px;
+	width: 150px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	border-color:#CCC;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+	border-width: 1px;
+}*/
+.textbox2{
+	font-family: sans-serif;
+	font-size: 20px;
+	padding: 2px;
+}
+
+.textbox3{
+	font-family: sans-serif;
+	font-size: 20px;
+}
+.textboxX{
+	/*height: 20px;
+	width: 155px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	border-color:#CCC;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+	border-width: 1px;*/
+}
+
+.textfieldComp{
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	border-color:#CCC;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+	border-width: 1px;
+}
+
+.clear{
+	float: left;
+}
+.quit{
+	float: right;
+	color:#333;
+	border: none;
+	height: 20px;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size: 10px;
+}
+.name{
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-weight: bold;
+	font-size: 18px;
+	font-style: italic;
+	width: 200px;
+}
+.links{
+	padding: 3px 2px 2px 2px;
+	width: auto;
+	height: 20px;
+	font-family: Tahoma;
+	font-size: 12px;
+	cursor: pointer;
+}
+.intro{
+	margin: 20px;
+	margin-left: 0;
+	padding: 10px;
+	width: 450px;
+	height: auto;
+	border: solid 1px #C9DFFE;
+	background-color: #E1E3FE;
+	color: #333;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.links img{
+	float:left;
+}
+.links a{
+	color: #333;
+}
+.links:hover{
+	background-color:#D7E6FE;
+}
+#container {
+	margin-top: 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: auto;
+	width: 900px;
+	height: auto;	
+}
+#container #links {
+	float: left;
+	width: 20%;
+	height: auto;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-right: 15px;	
+	border: solid 1px #C9DFFE;
+}
+#container #links a {
+	text-decoration: none;
+}
+#search{
+	width: 175px;
+	height: 19px;
+	padding:2px;
+}
+.search{
+	border: none;
+	background-color:#FFF;
+	padding: 1px;
+	height: 18px;
+	width: 170px;
+}
+#links li{
+	list-style: none;
+}
+#container #wrapper {
+	float: left;
+	width: 70%;
+	height: auto;
+	padding-left: 25px;
+	margin-top: 15px;
+	/*margin-left: 15px;*/
+	margin-right: 15px;
+	/*border-left: solid 0.5px #CCC;*/
+/*	border-bottom: solid 0.5px #CCC;*/}
+#nav {
+	margin: 0;
+	height:30px;
+	width: auto;
+	background-image:url(../Images/header.png);
+	background-repeat: repeat-x;
+	color: #FFF;
+	border-bottom: solid 10px #F8F8F8;
+	
+}
+#nav .holder{
+	margin: auto;
+	width: 850px;
+	/*padding-top: 5px;*/
+}
+.holder ul{
+	list-style-type: none;
+	list-style: none;
+}
+.holder li{
+	margin-right: 15px;
+}
+.holder a{
+	color: #FFF;
+	text-decoration: none;
+}
+.holder a:active{
+	font-weight: bold;
+}
+.holder a:hover{
+	color: #CCC;
+}
+
+/*---------------------------------------/
+------Styling for pages not in index-----/
+----------------------------------------*/
+#edit{
+	width:500px;
+	height: auto;
+	margin: auto;
+	margin-top: 100px;
+	padding: 20px;
+	background-color: #E6ECFE;
+	border: solid 1px #B0C7FD;
+}
+#edit a{
+	text-decoration:none;
+	color:#333;
+}
+#edit a:hover{
+	color:#039;
+}
+#edit img{
+	float: left;}
+#navigate{
+	width:auto;
+	height: 50px;
+	border-bottom: dotted 1px #FFF;
+}
+#edit2{
+	width:700px;
+	height: auto;
+	margin: auto;
+	margin-top: 100px;
+	padding: 20px;
+	background-color: #E6ECFE;
+	border: solid 1px #B0C7FD;
+}
+#edit2 img{
+	float: left;}
+.bdays{
+	font-size: 11px;
+	color: #FFF;
+	background-color:#333;	
+}
+.date{
+	color:#369;
+	font-size: 11px;
+}
+.today{
+	color:#FFF;
+	background-color: #3F0;
+	font-size: 12px;
+	font-weight: bold;
+}
+.notfound{
+	font-size: 18px;
+	color:#F00;
+	font-style:oblique;
+}
+.button{
+	border: 0;
+	padding: 8px;
+	margin-left: 10px;
+	font-size: 15px;
+	color: #fff;
+	background-color: #858585;
+	width: 100px;
+}
+a { display: inline-block; }

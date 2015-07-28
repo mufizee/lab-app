@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* CSS Document */
+body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, form, fieldset, blockquote, a {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}
+body{
+	background: #FFF;
+	font-family: Helvetica, Arial, Sans-Serif;
+	font-size: 13px;
+	margin: 0;
+	color:#333
+}
+#wrapper{
+	width: 900px;
+	height: auto;
+}
+a { display: inline-block; }
+.head{
+	font-family: Tahoma, Geneva, sans-serif;
+	text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+}
+.add{
+	font-family: Tahoma, Geneva, sans-serif;
+	text-align: center;
+	font-size:14px;
+	font-weight: bold;
+}
+.name{
+	font-family: Tahoma, Geneva, sans-serif;
+	text-align: center;
+	font-size:17px;
+	font-weight: bold;
+}
+.liltext{
+	font-size: 10px;
+}
+#wrapper .resultTops{
+	width: 290px;
+	height:auto;
+	margin-left: 10px;
+	float:left;
+	
+}
+#wrapper .resultBottom{
+	width: 750px;
+	height: auto;
+	margin: 5px;
+	float:left;
+}
+#wrapper .resultBottom2{
+	width: 900px;
+	height: auto;
+	margin: 5px;
+	float:left;
+}

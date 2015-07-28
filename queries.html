@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<p>$sql  = &quot;CREATE DATABASE `eyeclinic`;&quot;;
+</p>
+<p>&nbsp;</p>
+<p>$sql  = &quot;CREATE TABLE `eyeclinic`.`stock` (`item_name`   VARCHAR(255) NOT NULL, `item_type` VARCHAR(255) NOT NULL, `no_of_stock`   INT NULL) ENGINE = InnoDB;&quot;;</p>
+<p>CREATE TABLE `eyeclinic`.`records` (`Reciept_no` VARCHAR(255) NULL, `MRno` VARCHAR(255) NULL, `Time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP, `Date` DATE NULL, `name` VARCHAR(255) NULL, `Age` INT NULL, `HMO` VARCHAR(255) NULL, `HMOno` VARCHAR(255) NULL, `Address` VARCHAR(255) NULL, `Sex` VARCHAR(255) NULL, `complaint` TEXT NULL, `diagnosisRE` TEXT NULL, `diagnosisLE` TEXT NULL, `vision_withoutgRE` VARCHAR(255) NULL, `vision_withoutgLE` VARCHAR(255) NULL, `vision_withgRE` VARCHAR(255) NULL, `vision_withgLE` VARCHAR(255) NULL, `lidsadnexaRE` VARCHAR(255) NULL, `lidsadnexaLE` VARCHAR(255) NULL, `conjuctivaRE` VARCHAR(255) NULL, `conjuctivaLE` VARCHAR(255) NULL, `corneaRE` VARCHAR(255) NOT NULL, `corneaLE` VARCHAR(255) NOT NULL, `ant_chamberRE` VARCHAR(255) NOT NULL, `ant_chamberLE` VARCHAR(255) NOT NULL, `irisRE` VARCHAR(255) NOT NULL, `irisLE` VARCHAR(255) NOT NULL, `pupilRE` VARCHAR(255) NOT NULL, `pupilLE` VARCHAR(255) NOT NULL, `lensRE` VARCHAR(255) NOT NULL, `lensLE` VARCHAR(255) NOT NULL, `op_mRE` VARCHAR(255) NOT NULL, `op_mLE` VARCHAR(255) NOT NULL, `tensionRE` VARCHAR(255) NOT NULL, `tensionLE` VARCHAR(255) NOT NULL, `lacductRE` VARCHAR(255) NOT NULL, `lacductLE` VARCHAR(255) NOT NULL, `autorefreading_od` VARCHAR(255) NOT NULL, `autorefreading_os` VARCHAR(255) NOT NULL, `subjectivereading_od` VARCHAR(255) NOT NULL, `subjectivereading_os` VARCHAR(255) NOT NULL, `fundus_od` VARCHAR(255) NOT NULL, `fundus_os` VARCHAR(255) NOT NULL, `treatment` TEXT NOT NULL, `diabetic` VARCHAR(255) NOT NULL, `hypertensive` VARCHAR(255) NOT NULL, `asthmatic` VARCHAR(255) NOT NULL, `allergies` VARCHAR(255) NOT NULL, `cardiac` VARCHAR(255) NOT NULL, `others` VARCHAR(255) NOT NULL, `investigations` TEXT NOT NULL, `urinesugar` VARCHAR(255) NOT NULL, `bp` VARCHAR(255) NOT NULL) ENGINE = InnoDB;</p>
+<p>&nbsp;</p>
+<p>CREATE  TABLE  `eyeclinic`.`patients` (</p>
+<div> `firstname` VARCHAR( 255  )  NOT  NULL ,<br />
+  `lastname` VARCHAR( 255  )  NOT  NULL ,<br />
+  `Gender` VARCHAR( 255  )  NOT  NULL ,<br />
+  `Date` INT NOT  NULL </div>
+<p>) ENGINE  = InnoDB;</p>
+<p>&nbsp;</p>
+<p>$sql  = &quot;ALTER TABLE `patients` CHANGE `Date` `DOB` DATE NOT NULL&quot;;</p>
+<p>ALTER  TABLE  `patients`  ADD  `address` VARCHAR( 255  )  NOT  NULL  AFTER  `DOB` ,<br />
+ADD  `occupation` VARCHAR( 255  )  NOT  NULL  AFTER  `address` ,<br />
+ADD  `cellno` INT NOT  NULL  AFTER  `occupation` ,<br />
+ADD  `otherno` INT NOT  NULL  AFTER  `cellno` ,<br />
+ADD  `mrno` VARCHAR( 50  )  NOT  NULL  AFTER  `otherno` ,<br />
+ADD  `hmo_name` VARCHAR( 255  )  NOT  NULL  AFTER  `mrno` ,<br />
+ADD  `hmo_no` VARCHAR( 255  )  NOT  NULL  AFTER  `hmo_name` ,<br />
+ADD  `ref_hospital` VARCHAR( 255  )  NOT  NULL  AFTER  `hmo_no` ,<br />
+ADD  `company` VARCHAR( 255  )  NOT  NULL  AFTER  `ref_hospital` ,<br />
+ADD  `auth_code` VARCHAR( 255  )  NOT  NULL  AFTER  `company` ,<br />
+ADD  `personel` VARCHAR( 50  )  NOT  NULL  AFTER  `auth_code` </p>
+<div> </div>
+<p><br />
+</p>
+</body>
+</html>
