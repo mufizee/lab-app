@@ -1,15 +1,14 @@
 <?php
 session_start();
+$id = $_SESSION['id'];
 if (isset($_SESSION['id'])) {
 	Header('Location: index.php');
 }
-
 if ($_POST['username']) {
 	include_once "connect_to_mysql.php";
 	$username = stripslashes($_POST['username']);
 	$password = ereg_replace("[^A-Za-z0-9]", "", $_POST['password']);
 	//$password = md5($password);
-
 	$sql         = mysql_query("SELECT * FROM staff WHERE username ='$username' AND password='$password'");
 	$login_check = mysql_num_rows($sql);
 	if ($login_check > 0) {

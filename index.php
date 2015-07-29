@@ -1,13 +1,11 @@
 <?php
 session_start();
-$_SESSION['id']       = "1";
-$_SESSION['username'] = "muna";
-/*if(!isset($_SESSION['id'])){
-Header('Location: login.php');
-}else{
-$userid = $_SESSION['id'];
-$username = $_SESSION['username'];
-}*/
+if (!isset($_SESSION['id'])) {
+	Header('Location: login.php');
+} else {
+	$userid   = $_SESSION['id'];
+	$username = $_SESSION['username'];
+}
 ?>
 <!DOCTYPE html>
 <html>

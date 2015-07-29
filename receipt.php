@@ -2,8 +2,8 @@
 session_start();
 $id = $_SESSION['id'];
 if (!isset($_SESSION['id'])) {
-	Header('Location: login.php');}
-
+	Header('Location: login.php');
+}
 include_once "connect_to_mysql.php";
 $mrno    = $_POST['mrno'];
 $patient = mysql_query("Select * from patients where mrno = '$mrno'");
