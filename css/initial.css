@@ -6,6 +6,10 @@ body {
 table {
 	width: 400px;
 	padding-left: 30px;
+	border-collapse: collapse; border-spacing: 10px;
+}
+th, td {
+	padding: 10px;
 }
 #wrapper {
 	vertical-align:middle;
@@ -34,25 +38,31 @@ table {
 }
 
 input[type=text],input[type=password] {
-	height: 30px;
+	height: 40px;
 	width: 250px;
 	border: 0.5px solid #3f3f40;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box; 
 }
 .textbox2{
 	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 20px;
-	padding: 2px;
+	font-size: 15px;
+	padding: 8px;
 }
 
 .textbox3{
 	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 20px;
+	font-size: 15px;
 }
 #content{
 	width: auto;
 	height: auto;
 	text-align: center;
 	padding: 0 10px 10px 10px;
+}
+input:focus{
+	border: 1px solid green;
 }
 
 h1{
@@ -62,6 +72,7 @@ h1{
 .smalltext{
 	font-size: 13px;
 	color: #c1dff4;
+	text-align: right;
 }
 
 a {
