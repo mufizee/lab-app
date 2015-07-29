@@ -1,74 +1,72 @@
 <?php
 session_start();
 $id = $_SESSION['id'];
-if(!isset($_SESSION['id'])){
-		Header('Location: login.php');
-	}
-	
-	include_once "connect_to_mysql.php";
-	
-	$pmrno = $_POST['mrno'];
-	$Recieptno = $_POST['rno'];
-	$patient = mysql_query("Select * from records where MRno = '$pmrno' and Reciept_no = '$Recieptno'");
-	while ($row = mysql_fetch_array($patient))
-	{
-		$mrno = $row['MRno'];
-		//$Time = $row['time'];
-		$Date = $row['Date'];
-		$name = $row['name'];
-		$age = $row['Age'];
-		$hmoname = $row['HMO'];
-		$hmono = $row['HMOno'];
-		$address = $row['Address'];
-		$sex = $row['Sex'];
-		$complaint = $row['complaint'];
-		$diagnosisRE = $row['diagnosisRE'];
-		$diagnosisLE = $row['diagnosisLE'];
-		$vision_withoutgRE = $row['vision_withoutgRE'];
-		$vision_withoutgLE = $row['vision_withoutgLE'];
-		$vision_withgRE = $row['vision_withgRE'];
-		$vision_withgLE = $row['vision_withgLE'];
-		$lidsadnexaRE = $row['lidsadnexaRE'];
-		$lidsadnexaLE = $row['lidsadnexaLE'];	
-		$conjuctivaRE = $row['conjuctivaRE'];
-		$conjuctivaLE = $row['conjuctivaLE'];
-		$corneaRE = $row['corneaRE'];
-		$corneaLE = $row['corneaLE'];
-		$ant_chamberRE = $row['ant_chamberRE'];
-		$ant_chamberLE = $row['ant_chamberLE'];
-		$irisRE = $row['irisRE'];
-		$irisLE = $row['irisLE'];
-		$pupilRE = $row['pupilRE'];
-		$pupilLE = $row['pupilLE'];
-		$lensRE = $row['lensRE'];
-		$lensLE = $row['lensLE'];
-		$op_mRE = $row['op_mRE'];
-		$op_mLE = $row['op_mLE'];
-		$tensionRE = $row['tensionRE'];
-		$tensionLE = $row['tensionLE'];
-		$lacductRE = $row['lacductRE'];
-		$lacductLE = $row['lacductLE'];
-		$autorefreading_od = $row['autorefreading_od'];
-		$autorefreading_os = $row['autorefreading_os'];
-		$subjectivereading_od = $row['subjectivereading_od'];
-		$subjectivereading_os = $row['subjectivereading_os'];
-		$nearreading_OD = $row['nearreading_OD'];
-		$nearreading_OS = $row['nearreading_OS'];
-		$fundus_od = $row['fundus_od'];
-		$fundus_os = $row['fundus_os'];
-		$treatment = $row['treatment'];
-		$diabetic = $row['diabetic'];
-		$hypertensive = $row['hypertensive'];
-		$asthmatic = $row['asthmatic'];
-		$allergies = $row['allergies'];
-		$cardiac = $row['cardiac'];
-		$others = $row['others'];
-		$urinesugar = $row['urinesugar'];
-		$bp = $row['bp'];
+if (!isset($_SESSION['id'])) {
+	Header('Location: login.php');
+}
 
-	}
-		
-		   
+include_once "connect_to_mysql.php";
+
+$pmrno     = $_POST['mrno'];
+$Recieptno = $_POST['rno'];
+$patient   = mysql_query("Select * from records where MRno = '$pmrno' and Reciept_no = '$Recieptno'");
+while ($row = mysql_fetch_array($patient)) {
+	$mrno = $row['MRno'];
+	//$Time = $row['time'];
+	$Date                 = $row['Date'];
+	$name                 = $row['name'];
+	$age                  = $row['Age'];
+	$hmoname              = $row['HMO'];
+	$hmono                = $row['HMOno'];
+	$address              = $row['Address'];
+	$sex                  = $row['Sex'];
+	$complaint            = $row['complaint'];
+	$diagnosisRE          = $row['diagnosisRE'];
+	$diagnosisLE          = $row['diagnosisLE'];
+	$vision_withoutgRE    = $row['vision_withoutgRE'];
+	$vision_withoutgLE    = $row['vision_withoutgLE'];
+	$vision_withgRE       = $row['vision_withgRE'];
+	$vision_withgLE       = $row['vision_withgLE'];
+	$lidsadnexaRE         = $row['lidsadnexaRE'];
+	$lidsadnexaLE         = $row['lidsadnexaLE'];
+	$conjuctivaRE         = $row['conjuctivaRE'];
+	$conjuctivaLE         = $row['conjuctivaLE'];
+	$corneaRE             = $row['corneaRE'];
+	$corneaLE             = $row['corneaLE'];
+	$ant_chamberRE        = $row['ant_chamberRE'];
+	$ant_chamberLE        = $row['ant_chamberLE'];
+	$irisRE               = $row['irisRE'];
+	$irisLE               = $row['irisLE'];
+	$pupilRE              = $row['pupilRE'];
+	$pupilLE              = $row['pupilLE'];
+	$lensRE               = $row['lensRE'];
+	$lensLE               = $row['lensLE'];
+	$op_mRE               = $row['op_mRE'];
+	$op_mLE               = $row['op_mLE'];
+	$tensionRE            = $row['tensionRE'];
+	$tensionLE            = $row['tensionLE'];
+	$lacductRE            = $row['lacductRE'];
+	$lacductLE            = $row['lacductLE'];
+	$autorefreading_od    = $row['autorefreading_od'];
+	$autorefreading_os    = $row['autorefreading_os'];
+	$subjectivereading_od = $row['subjectivereading_od'];
+	$subjectivereading_os = $row['subjectivereading_os'];
+	$nearreading_OD       = $row['nearreading_OD'];
+	$nearreading_OS       = $row['nearreading_OS'];
+	$fundus_od            = $row['fundus_od'];
+	$fundus_os            = $row['fundus_os'];
+	$treatment            = $row['treatment'];
+	$diabetic             = $row['diabetic'];
+	$hypertensive         = $row['hypertensive'];
+	$asthmatic            = $row['asthmatic'];
+	$allergies            = $row['allergies'];
+	$cardiac              = $row['cardiac'];
+	$others               = $row['others'];
+	$urinesugar           = $row['urinesugar'];
+	$bp                   = $row['bp'];
+
+}
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -87,20 +85,20 @@ if(!isset($_SESSION['id'])){
   </caption>
 
 <tr>
-	<td colspan="2">Name : <font size="+1"><b><?php echo "$name"; ?></b></font></td>
+	<td colspan="2">Name : <font size="+1"><b><?php echo "$name";?></b></font></td>
     <td align="right">M.R.No</td>
-	<td><input name="mrno" type="text" class="textbox2" width="200" value="<?php echo "$mrno"; ?>"></td>
+	<td><input name="mrno" type="text" class="textbox2" width="200" value="<?php echo "$mrno";?>"></td>
 </tr>
 
 <tr>
-	<td colspan="2">HMO Name: <font size="+1"><b><?php echo "$hmoname"; ?></b></font></td>
-    <td>Age: <font size="+1"><b><?php echo "$age"; ?></b></font></td>
-    <td>HMO No.: <font size="+1"><b><?php echo "$hmono"; ?></b></font></td>
+	<td colspan="2">HMO Name: <font size="+1"><b><?php echo "$hmoname";?></b></font></td>
+    <td>Age: <font size="+1"><b><?php echo "$age";?></b></font></td>
+    <td>HMO No.: <font size="+1"><b><?php echo "$hmono";?></b></font></td>
 </tr>
 <tr>
 	<td colspan="2">&nbsp;</td>
     <td align="right">Reciept No:</td>
-    <td><input name="rno" type="text" class="textbox2" width="200" value="<?php echo "$Recieptno"; ?>" /></td>
+    <td><input name="rno" type="text" class="textbox2" width="200" value="<?php echo "$Recieptno";?>" /></td>
 </tr>
 <!--<tr>
 	<td>Date:</td>
@@ -273,7 +271,7 @@ if(!isset($_SESSION['id'])){
 </tr>-->
 <tr>
 	<td>Complaint:</td>
-    <td colspan="2">&nbsp;<input width="300" height="100" type="text" name="complaint" value="<?php echo "$complaint"; ?>" /></td>
+    <td colspan="2">&nbsp;<input width="300" height="100" type="text" name="complaint" value="<?php echo "$complaint";?>" /></td>
     <td>&nbsp;</td>
 </tr>
 
@@ -285,14 +283,14 @@ if(!isset($_SESSION['id'])){
 </tr>
 <tr>
 	<td>Vision without glasses:</td>
-    <td><input name="vwithoutgre" type="text" class="textbox2" width="200" value="<?php echo "$vision_withoutgRE"; ?>" /></td>
-    <td><input name="vwithoutgle" type="text" class="textbox2" width="200" value="<?php echo "$vision_withoutgLE"; ?>" /></td>
+    <td><input name="vwithoutgre" type="text" class="textbox2" width="200" value="<?php echo "$vision_withoutgRE";?>" /></td>
+    <td><input name="vwithoutgle" type="text" class="textbox2" width="200" value="<?php echo "$vision_withoutgLE";?>" /></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
 	<td>Vision with glasses:</td>
-    <td><input name="vwithgre" type="text" class="textbox2" width="200" value="<?php echo "$vision_withgRE"; ?>" /></td>
-    <td><input name="vwithgle" type="text" class="textbox2" width="200" value="<?php echo "$vision_withgLE"; ?>" /></td>
+    <td><input name="vwithgre" type="text" class="textbox2" width="200" value="<?php echo "$vision_withgRE";?>" /></td>
+    <td><input name="vwithgle" type="text" class="textbox2" width="200" value="<?php echo "$vision_withgLE";?>" /></td>
     <td>&nbsp;</td>
 </tr>
 
@@ -304,63 +302,63 @@ if(!isset($_SESSION['id'])){
 </tr>
 <tr>
 	<td>Lids/Adnexal:</td>
-    <td><input name="lare" type="text" class="textbox2" width="200" value="<?php echo "$lidsadnexaRE"; ?>" /></td>
-    <td><input name="lale" type="text" class="textbox2" width="200" value="<?php echo "$lidsadnexaLE"; ?>" /></td>
+    <td><input name="lare" type="text" class="textbox2" width="200" value="<?php echo "$lidsadnexaRE";?>" /></td>
+    <td><input name="lale" type="text" class="textbox2" width="200" value="<?php echo "$lidsadnexaLE";?>" /></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
 	<td>Conjuctiva:</td>
-    <td><input name="conjre" type="text" class="textbox2" width="200" value="<?php echo "$conjuctivaRE"; ?>" /></td>
-    <td><input name="conjle" type="text" class="textbox2" width="200" value="<?php echo "$conjuctivaLE"; ?>" /></td>
+    <td><input name="conjre" type="text" class="textbox2" width="200" value="<?php echo "$conjuctivaRE";?>" /></td>
+    <td><input name="conjle" type="text" class="textbox2" width="200" value="<?php echo "$conjuctivaLE";?>" /></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
 	<td>Cornea:</td>
-    <td><input name="cornre" type="text" class="textbox2" width="200" value="<?php echo "$corneaRE"; ?>" /></td>
-    <td><input name="cornle" type="text" class="textbox2" width="200" value="<?php echo "$corneaLE"; ?>" /></td>
+    <td><input name="cornre" type="text" class="textbox2" width="200" value="<?php echo "$corneaRE";?>" /></td>
+    <td><input name="cornle" type="text" class="textbox2" width="200" value="<?php echo "$corneaLE";?>" /></td>
     <td>&nbsp;</td>
-</tr>	
+</tr>
 <tr>
 	<td>Anterior Chamber:</td>
-    <td><input name="acre" type="text" class="textbox2" width="200" value="<?php echo "$ant_chamberRE"; ?>" /></td>
-    <td><input name="acle" type="text" class="textbox2" width="200" value="<?php echo "$ant_chamberLE"; ?>" /></td>
+    <td><input name="acre" type="text" class="textbox2" width="200" value="<?php echo "$ant_chamberRE";?>" /></td>
+    <td><input name="acle" type="text" class="textbox2" width="200" value="<?php echo "$ant_chamberLE";?>" /></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
 	<td>Iris</td>
-    <td><input name="irisre" type="text" class="textbox2" width="200" value="<?php echo "$irisRE"; ?>" /></td>
-    <td><input name="irisle" type="text" class="textbox2" width="200" value="<?php echo "$irisLE"; ?>" /></td>
+    <td><input name="irisre" type="text" class="textbox2" width="200" value="<?php echo "$irisRE";?>" /></td>
+    <td><input name="irisle" type="text" class="textbox2" width="200" value="<?php echo "$irisLE";?>" /></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
 	<td>Pupil</td>
-    <td><input name="pupilre" type="text" class="textbox2" width="200" value="<?php echo "$pupilRE"; ?>" /></td>
-    <td><input name="pupille" type="text" class="textbox2" width="200" value="<?php echo "$pupilLE"; ?>" /></td>
+    <td><input name="pupilre" type="text" class="textbox2" width="200" value="<?php echo "$pupilRE";?>" /></td>
+    <td><input name="pupille" type="text" class="textbox2" width="200" value="<?php echo "$pupilLE";?>" /></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
 	<td>Lens</td>
-    <td><input name="lensre" type="text" class="textbox2" width="200" value="<?php echo "$lensRE"; ?>" /></td>
-    <td><input name="lensle" type="text" class="textbox2" width="200" value="<?php echo "$lensLE"; ?>" /></td>
+    <td><input name="lensre" type="text" class="textbox2" width="200" value="<?php echo "$lensRE";?>" /></td>
+    <td><input name="lensle" type="text" class="textbox2" width="200" value="<?php echo "$lensLE";?>" /></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
 	<td>Ocular Position/Movements</td>
-    <td><input name="opmre" type="text" class="textbox2" width="200" value="<?php echo "$op_mRE"; ?>" /></td>
-    <td><input name="opmle" type="text" class="textbox2" width="200" value="<?php echo "$op_mLE"; ?> " /></td>
+    <td><input name="opmre" type="text" class="textbox2" width="200" value="<?php echo "$op_mRE";?>" /></td>
+    <td><input name="opmle" type="text" class="textbox2" width="200" value="<?php echo "$op_mLE";?> " /></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
 	<td>Tension</td>
-    <td><input name="tensre" type="text" class="textbox2" width="200" value="<?php echo "$tensionRE"; ?> " /></td>
-    <td><input name="tensle" type="text" class="textbox2" width="200" value="<?php echo "$tensionLE"; ?> " />
+    <td><input name="tensre" type="text" class="textbox2" width="200" value="<?php echo "$tensionRE";?> " /></td>
+    <td><input name="tensle" type="text" class="textbox2" width="200" value="<?php echo "$tensionLE";?> " />
     </td>
     <td>&nbsp;</td>
 </tr>
 <tr>
 	<td>Lacrimal Duct</td>
-    <td><input name="ldre" type="text" class="textbox2" width="200" value="<?php echo "$lacductRE"; ?> " /></td>
-    <td><input name="ldle" type="text" class="textbox2" width="200" value="<?php echo "$lacductLE"; ?> " /></td>
+    <td><input name="ldre" type="text" class="textbox2" width="200" value="<?php echo "$lacductRE";?> " /></td>
+    <td><input name="ldle" type="text" class="textbox2" width="200" value="<?php echo "$lacductLE";?> " /></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
@@ -377,13 +375,13 @@ if(!isset($_SESSION['id'])){
 </tr>
 <tr>
 	<td>OD</td>
-    <td><input name="arrOD" type="text" class="textbox2" width="200" value="<?php echo "$autorefreading_od"; ?> " /></td>
+    <td><input name="arrOD" type="text" class="textbox2" width="200" value="<?php echo "$autorefreading_od";?> " /></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
 </tr>
 <tr>
 	<td>OS</td>
-    <td><input name="arrOS" type="text" class="textbox2" width="200" value="<?php echo "$autorefreading_os"; ?>" /></td>
+    <td><input name="arrOS" type="text" class="textbox2" width="200" value="<?php echo "$autorefreading_os";?>" /></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
 </tr>
@@ -395,13 +393,13 @@ if(!isset($_SESSION['id'])){
 </tr>
 <tr>
 	<td>OD</td>
-    <td><input name="srOD" type="text" class="textbox2" width="200" value="<?php echo "$subjectivereading_od"; ?>" /></td>
+    <td><input name="srOD" type="text" class="textbox2" width="200" value="<?php echo "$subjectivereading_od";?>" /></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
 </tr>
 <tr>
 	<td>OS</td>
-    <td><input name="srOS" type="text" class="textbox2" width="200" value="<?php echo "$subjectivereading_os"; ?>" /></td>
+    <td><input name="srOS" type="text" class="textbox2" width="200" value="<?php echo "$subjectivereading_os";?>" /></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
 </tr>
@@ -413,50 +411,50 @@ if(!isset($_SESSION['id'])){
 </tr>
 <tr>
 	<td>OD:</td>
-    <td><input name="nrOD" type="text" class="textbox2" width="200" value="<?php echo "$nearreading_OD"; ?>" /></td>
+    <td><input name="nrOD" type="text" class="textbox2" width="200" value="<?php echo "$nearreading_OD";?>" /></td>
     <td align="right">Diabetic:</td>
-    <td><input name="diab" type="text" class="textbox2" width="200" value="<?php echo "$diabetic"; ?>" /></td>
+    <td><input name="diab" type="text" class="textbox2" width="200" value="<?php echo "$diabetic";?>" /></td>
 </tr>
 <tr>
 	<td>OS:</td>
-    <td><input name="nrOS" type="text" class="textbox2" width="200" value="<?php echo "$nearreading_OS"; ?>" /></td>
+    <td><input name="nrOS" type="text" class="textbox2" width="200" value="<?php echo "$nearreading_OS";?>" /></td>
     <td align="right">Asthmatic:</td>
-    <td><input name="astma" type="text" class="textbox2" width="200" value="<?php echo "$asthmatic"; ?>" /></td>
+    <td><input name="astma" type="text" class="textbox2" width="200" value="<?php echo "$asthmatic";?>" /></td>
 </tr>
 <tr>
 	<td>Fundus:</td>
     <td>&nbsp;</td>
     <td align="right">Cardiac:</td>
-    <td><input name="cardi" type="text" class="textbox2" width="200" value="<?php echo "$cardiac"; ?>" /></td>
+    <td><input name="cardi" type="text" class="textbox2" width="200" value="<?php echo "$cardiac";?>" /></td>
 </tr>
 <tr>
 	<td>OD</td>
-    <td><input name="FOD" type="text" class="textbox2" width="200" value="<?php echo "$fundus_od"; ?>" /></td>
+    <td><input name="FOD" type="text" class="textbox2" width="200" value="<?php echo "$fundus_od";?>" /></td>
     <td align="right">Hypertensive:</td>
-    <td><input name="hype" type="text" class="textbox2" width="200" value="<?php echo "$hypertensive"; ?>" /></td>
+    <td><input name="hype" type="text" class="textbox2" width="200" value="<?php echo "$hypertensive";?>" /></td>
 </tr>
 <tr>
 	<td>OS</td>
-    <td><input name="FOS" type="text" class="textbox2" width="200" value="<?php echo "$fundus_os"; ?>" /></td>
+    <td><input name="FOS" type="text" class="textbox2" width="200" value="<?php echo "$fundus_os";?>" /></td>
     <td align="right">Allergies</td>
-    <td><input name="allerg" type="text" class="textbox2" width="200" value="<?php echo "$allergies"; ?>" /></td>
+    <td><input name="allerg" type="text" class="textbox2" width="200" value="<?php echo "$allergies";?>" /></td>
 </tr>
 
 <tr>
 	<td>Diagnosis OD:</td>
-    <td><input name="diagre" type="text" class="textbox2" width="200" value="<?php echo "$diagnosisRE"; ?>"></td>
+    <td><input name="diagre" type="text" class="textbox2" width="200" value="<?php echo "$diagnosisRE";?>"></td>
     <td align="right">BP:</td>
-    <td><input name="BP" type="text" class="textbox2" width="200" value="<?php echo "$bp"; ?>" /></td>
+    <td><input name="BP" type="text" class="textbox2" width="200" value="<?php echo "$bp";?>" /></td>
 </tr>
 <tr>
 	<td>Diagnosis OS:</td>
-    <td><input name="diagle" type="text" class="textbox2" width="200" value="<?php echo "$diagnosisLE"; ?>" /></td>
+    <td><input name="diagle" type="text" class="textbox2" width="200" value="<?php echo "$diagnosisLE";?>" /></td>
     <td align="right">Urine Sugar</td>
-    <td><input name="urine" type="text" class="textbox2" width="200" value="<?php echo "$urinesugar"; ?>" /></td>
+    <td><input name="urine" type="text" class="textbox2" width="200" value="<?php echo "$urinesugar";?>" /></td>
 </tr>
 <tr>
 	<td>Treatment: </td>
-    <td colspan="3"><input name="treatment" type="text" class="textbox2" width="200" value="<?php echo "$treatment"; ?>" /></td>
+    <td colspan="3"><input name="treatment" type="text" class="textbox2" width="200" value="<?php echo "$treatment";?>" /></td>
 </tr>
 <tr>
 	<td>&nbsp;</td>

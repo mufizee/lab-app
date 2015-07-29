@@ -1,97 +1,89 @@
 <?php
 session_start();
 $id = $_SESSION['id'];
-if(!isset($_SESSION['id'])){
-		Header('Location: login.php');
-	}
+if (!isset($_SESSION['id'])) {
+	Header('Location: login.php');
+}
 ?>
 <?php
 $errorMsg = "";
-$date = date("Y/m/d");
-$mm = date("m");
+$date     = date("Y/m/d");
+$mm       = date("m");
 
-		$fname = "";
-		$lastname = "";
-		$gender = "";
-		$month = "";
-		$day = "";
-		$year = "";
-		$age = "";
-		$address = "";
-		$occupation = "";
-		$cell = "";
-		$otherno = "";
-		$mrno = "";
-		$hmoname = "";
-		$hmono = "";
-		$rh = "";
-		$company = "";
-		$ac = "";
+$fname      = "";
+$lastname   = "";
+$gender     = "";
+$month      = "";
+$day        = "";
+$year       = "";
+$age        = "";
+$address    = "";
+$occupation = "";
+$cell       = "";
+$otherno    = "";
+$mrno       = "";
+$hmoname    = "";
+$hmono      = "";
+$rh         = "";
+$company    = "";
+$ac         = "";
 
+if ($_POST['firstname']) {
+	include_once "connect_to_mysql.php";
 
-	if($_POST['firstname'])
-	{
-		include_once "connect_to_mysql.php";
-		
-		$fname = $_POST['firstname'];
-		$lastname = $_POST['lastname'];
-		$gender = $_POST['gender'];
-		$month = $_POST['month'];
-		$day = $_POST['day'];
-		$year = $_POST['year'];
-		$age = $_POST['age'];
-		$address = $_POST['address'];
-		$occupation = $_POST['occupation'];
-		$cell = $_POST['cellno'];
-		$otherno = $_POST['otherno'];
-		$mrno = $_POST['mrno'];
-		$hmoname = $_POST['hmoname'];
-		$hmono = $_POST['hmono'];
-		$rh = $_POST['rh'];
-		$company = $_POST['company'];
-		$ac = $_POST['ac'];
-		//$age = date('Y') - $year;
+	$fname      = $_POST['firstname'];
+	$lastname   = $_POST['lastname'];
+	$gender     = $_POST['gender'];
+	$month      = $_POST['month'];
+	$day        = $_POST['day'];
+	$year       = $_POST['year'];
+	$age        = $_POST['age'];
+	$address    = $_POST['address'];
+	$occupation = $_POST['occupation'];
+	$cell       = $_POST['cellno'];
+	$otherno    = $_POST['otherno'];
+	$mrno       = $_POST['mrno'];
+	$hmoname    = $_POST['hmoname'];
+	$hmono      = $_POST['hmono'];
+	$rh         = $_POST['rh'];
+	$company    = $_POST['company'];
+	$ac         = $_POST['ac'];
+	//$age = date('Y') - $year;
 
-		if ((!$fname) || (!$lastname) || (!$cell))
-		 {
-			$errorMsg = "You did not fill the following required information!<br />";
-			if	(!$fname){
-				$errorMsg .= "--firstname";	
-			}
-			else if (!$lastname){
-				$errorMsg .= "--lastname";
-			}
-			else if (!$cell) {
-				$errorMsg .= "--Phone no.";
-			}
-			
-		}else
-		{
-			$sql_firstname_check = mysql_query("SELECT id FROM patients WHERE firstname = '$fname' and lastname = '$lastname' LIMIT 1");
-			$firstname_check = mysql_num_rows($sql_firstname_check);
-			if ($firstname_check > 0){ 
-				$errorMsg = "<u>ERROR:</u><br />Your Name is already in use inside our system. Please try another.";}
-			else { 
-				$sql_mrno_check = mysql_query("SELECT id FROM patients WHERE mrno = '$mrno' LIMIT 1");
-				$mrno_check = mysql_num_rows($sql_mrno_check);
-				if($mrno_check > 0){
-					$errorMsg = "<u>ERROR:</u><br />The MRNo already exist in your Database. Please refresh.";}
-					else{
+	if ((!$fname) || (!$lastname) || (!$cell)) {
+		$errorMsg = "You did not fill the following required information!<br />";
+		if (!$fname) {
+			$errorMsg .= "--firstname";
+		} else if (!$lastname) {
+			$errorMsg .= "--lastname";
+		} else if (!$cell) {
+			$errorMsg .= "--Phone no.";
+		}
 
-			$sql = mysql_query("INSERT INTO patients (id, firstname, lastname, Gender, DOB, age, address, occupation, cellno, otherno, mrno, hmo_name, hmo_no, ref_hospital, company, auth_code, regTime, personel, Month, bday) VALUES (NULL, '$fname', '$lastname', '$gender', '$year/$month/$day', '$age', '$address', '$occupation', '$cell', '$otherno', '$mrno', '$hmoname', '$hmono', '$rh', '$company', '$ac', CURRENT_TIMESTAMP, '$id', '$month', '$day')") or die(mysql_error());
-			
-						// Update last_log_date field for this member now
-			$sql2 = mysql_query("INSERT INTO logs (personel, action, date, time) VALUES('$id', 'Registered new patient $fname $lastname', '$date' , CURRENT_TIMESTAMP)") or die(mysql_error());
-			
-			//print success message if login successful then exit the script
-			echo "$fname, your registration has been successful <br /><a href='index.php'>Click here<br>
+	} else {
+		$sql_firstname_check = mysql_query("SELECT id FROM patients WHERE firstname = '$fname' and lastname = '$lastname' LIMIT 1");
+		$firstname_check     = mysql_num_rows($sql_firstname_check);
+		if ($firstname_check > 0) {
+			$errorMsg       = "<u>ERROR:</u><br />Your Name is already in use inside our system. Please try another.";} else {
+			$sql_mrno_check = mysql_query("SELECT id FROM patients WHERE mrno = '$mrno' LIMIT 1");
+			$mrno_check     = mysql_num_rows($sql_mrno_check);
+			if ($mrno_check > 0) {
+				$errorMsg = "<u>ERROR:</u><br />The MRNo already exist in your Database. Please refresh.";} else {
+
+				$sql = mysql_query("INSERT INTO patients (id, firstname, lastname, Gender, DOB, age, address, occupation, cellno, otherno, mrno, hmo_name, hmo_no, ref_hospital, company, auth_code, regTime, personel, Month, bday) VALUES (NULL, '$fname', '$lastname', '$gender', '$year/$month/$day', '$age', '$address', '$occupation', '$cell', '$otherno', '$mrno', '$hmoname', '$hmono', '$rh', '$company', '$ac', CURRENT_TIMESTAMP, '$id', '$month', '$day')") or die(mysql_error());
+
+				// Update last_log_date field for this member now
+				$sql2 = mysql_query("INSERT INTO logs (personel, action, date, time) VALUES('$id', 'Registered new patient $fname $lastname', '$date' , CURRENT_TIMESTAMP)") or die(mysql_error());
+
+				//print success message if login successful then exit the script
+				echo "$fname, your registration has been successful <br /><a href='index.php'>Click here<br>
 </a> to return to the portal";
-			header("Location: index.php");
-			exit();
-					}
+				header("Location: index.php");
+				exit();
+			}
 		}
 	}
-}	
+}
 ?>
 
 
@@ -99,29 +91,29 @@ $mm = date("m");
 <form action="registration.php" method="post" enctype="multipart/form-data">
 PATIENT REGISTRATION
 <p>
-<font color="#FF0000"><?php echo "$errorMsg"; ?></font>
+<font color="#FF0000"><?php echo "$errorMsg";?></font>
 <table cellspacing="5">
 <tr>
 	<td width="121">Firstname:</td>
-	<td width="217"><input name="firstname" type="text" class="textbox2" width="200" maxlength="50" value="<?php echo "$fname"; ?>" /> 
+	<td width="217"><input name="firstname" type="text" class="textbox2" width="200" maxlength="50" value="<?php echo "$fname";?>" />
 	*</td>
 </tr>
 <tr>
 	<td>Lastname:</td>
-	<td><input name="lastname" type="text" class="textbox2" width="200" maxlength="50" value="<?php echo "$lastname"; ?>" /> 
+	<td><input name="lastname" type="text" class="textbox2" width="200" maxlength="50" value="<?php echo "$lastname";?>" />
 	*</td>
 </tr>
 <tr>
 	<td>Gender:</td>
 	<td><input name="gender" type="radio" value="Male" checked="checked" > Male
-	  <input name="gender" type="radio" value="Female" > 
+	  <input name="gender" type="radio" value="Female" >
 	  Female
     </td>
 </tr>
 <tr>
 	<td>Date of Birth:</td>
 	<td><select name="month" class="textbox3">
-      <option value="<?php echo "$month"; ?>" selected="selected"><?php echo "$month"; ?></option>
+      <option value="<?php echo "$month";?>" selected="selected"><?php echo "$month";?></option>
 	  <option value="01">January</option>
 	  <option value="02">February</option>
 	  <option value="03">March</option>
@@ -136,7 +128,7 @@ PATIENT REGISTRATION
 	  <option value="12">December</option>
 	  </select>
       <select name="day" class="textbox3">
-      <option value="<?php echo "$day"; ?>" selected="selected"><?php echo "$day"; ?></option>
+      <option value="<?php echo "$day";?>" selected="selected"><?php echo "$day";?></option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -170,7 +162,7 @@ PATIENT REGISTRATION
         <option value="31">31</option>
       </select>
       <select name="year" class="textbox3">
-      <option value="<?php echo "$year"; ?>" selected="selected"><?php echo "$year"; ?></option>
+      <option value="<?php echo "$year";?>" selected="selected"><?php echo "$year";?></option>
         <option value="2012">2012</option>
         <option value="2011">2011</option>
         <option value="2010">2010</option>
@@ -291,61 +283,61 @@ PATIENT REGISTRATION
 </tr>
 <tr>
 	<td>Age:</td>
-	<td><input name="age" type="text" class="textbox2" width="200" value="<?php echo"$age"; ?>" /></td>
+	<td><input name="age" type="text" class="textbox2" width="200" value="<?php echo "$age";?>" /></td>
 </tr>
 <tr>
 	<td>Address:</td>
-	<td><input name="address" type="text" class="textbox2" width="200" value="<?php echo"$address"; ?>" /></td>
+	<td><input name="address" type="text" class="textbox2" width="200" value="<?php echo "$address";?>" /></td>
 </tr>
 <tr>
 	<td>Occupation:</td>
-	<td><input name="occupation" type="text" class="textbox2" width="200" maxlength="50" value="<?php echo"$occupation"; ?>" /></td>
+	<td><input name="occupation" type="text" class="textbox2" width="200" maxlength="50" value="<?php echo "$occupation";?>" /></td>
 </tr>
 <tr>
 	<td>Cellphone No:</td>
-	<td><input name="cellno" type="text" class="textbox2" width="200" maxlength="14" value="<?php echo"$cell"; ?>" /> 
+	<td><input name="cellno" type="text" class="textbox2" width="200" maxlength="14" value="<?php echo "$cell";?>" />
 	*</td>
 </tr>
 <tr>
 	<td>Other no:</td>
-	<td><input name="otherno" type="text" class="textbox2" width="200" maxlength="14" value="<?php echo "$otherno"; ?>" /></td>
+	<td><input name="otherno" type="text" class="textbox2" width="200" maxlength="14" value="<?php echo "$otherno";?>" /></td>
 </tr>
 <tr>
 	<td>M.R.No:</td>
-	<td><input name="mrno" type="text" class="textbox2" width="200" maxlength="20" value="<?php echo "FEC/"."$mm/".rand(100, 999); ?>" /></td>
+	<td><input name="mrno" type="text" class="textbox2" width="200" maxlength="20" value="<?php echo "FEC/" . "$mm/" . rand(100, 999);?>" /></td>
 </tr>
-<tr> 
+<tr>
 	<td>HMO Name:</td>
-	<td><!--<input name="hmoname" type="text" class="textbox2" width="200" value="<?php echo "$hmoname"; ?>" />-->
+	<td><!--<input name="hmoname" type="text" class="textbox2" width="200" value="<?php echo "$hmoname";?>" />-->
     <?php
-	include_once "connect_to_mysql.php";
-	
-	$hmoselect = @mysql_query("select hmo from eyeclinic.hmo");
-	
-	echo "<select name=\"hmoname\" class=\"textboxX\">";
-	while ($row = mysql_fetch_assoc($hmoselect)){
-		$hmonames = $row['hmo'];
-		echo "<option value=$hmonames>$hmonames</option>";
-	}
-	echo "</select>";
-	?>
+include_once "connect_to_mysql.php";
+
+$hmoselect = @mysql_query("select hmo from eyeclinic.hmo");
+
+echo "<select name=\"hmoname\" class=\"textboxX\">";
+while ($row = mysql_fetch_assoc($hmoselect)) {
+	$hmonames = $row['hmo'];
+	echo "<option value=$hmonames>$hmonames</option>";
+}
+echo "</select>";
+?>
     </td>
 </tr>
 <tr>
 	<td>HMO NO:</td>
-	<td><input name="hmono" type="text" class="textbox2" width="200" value="<?php echo "$hmono"; ?>" /></td>
+	<td><input name="hmono" type="text" class="textbox2" width="200" value="<?php echo "$hmono";?>" /></td>
 </tr>
 <tr>
 	<td>Referring Hospital:</td>
-	<td><input name="rh" type="text" class="textbox2" width="200" value="<?php echo "$rh"; ?>" /></td>
+	<td><input name="rh" type="text" class="textbox2" width="200" value="<?php echo "$rh";?>" /></td>
 </tr>
 <tr>
 	<td>Company:</td>
-	<td><input name="company" type="text" class="textbox2" width="200" value="<?php echo "$company"; ?>" /></td>
+	<td><input name="company" type="text" class="textbox2" width="200" value="<?php echo "$company";?>" /></td>
 </tr>
 <tr>
 	<td>Authorization Code:</td>
-	<td><input name="ac" type="text" class="textbox2" width="200" value="<?php echo "$ac"; ?>" /></td>
+	<td><input name="ac" type="text" class="textbox2" width="200" value="<?php echo "$ac";?>" /></td>
 </tr>
 <tr>
 	<td>&nbsp;</td>

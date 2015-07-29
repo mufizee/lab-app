@@ -1,29 +1,28 @@
 <?php
 session_start();
 $id = $_SESSION['id'];
-if(!isset($_SESSION['id'])){
-		Header('Location: login.php');
-	}
-	
-	include_once "connect_to_mysql.php";
-	
-	$mrno = $_POST['mrno'];
-	$patient = mysql_query("Select * from patients where mrno = '$mrno'");
-	while ($row = mysql_fetch_array($patient))
-	{
-		$firstname = $row['firstname'];
-		$id = $row['id'];
-		$lastname = $row['lastname'];
-		$age = $row['age'];
-		$address = $row['address'];
-		$cellno = $row['cellno'];
-		$hmoname = $row['hmo_name'];
-		$hmono = $row['hmo_no'];
-		$rh = $row['ref_hospital'];
-		$company = $row['company'];
-		$ac = $row['auth_code'];
-		$sex = $row['Gender'];
-	}
+if (!isset($_SESSION['id'])) {
+	Header('Location: login.php');
+}
+
+include_once "connect_to_mysql.php";
+
+$mrno    = $_POST['mrno'];
+$patient = mysql_query("Select * from patients where mrno = '$mrno'");
+while ($row = mysql_fetch_array($patient)) {
+	$firstname = $row['firstname'];
+	$id        = $row['id'];
+	$lastname  = $row['lastname'];
+	$age       = $row['age'];
+	$address   = $row['address'];
+	$cellno    = $row['cellno'];
+	$hmoname   = $row['hmo_name'];
+	$hmono     = $row['hmo_no'];
+	$rh        = $row['ref_hospital'];
+	$company   = $row['company'];
+	$ac        = $row['auth_code'];
+	$sex       = $row['Gender'];
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -42,20 +41,20 @@ if(!isset($_SESSION['id'])){
   <b>CONTINUATION SHEET</b>
   </caption>
 <tr>
-	<td colspan="2">Firstname: <font size="+1"><b><input type="text" name="firstname" value="<?php echo "$firstname"; ?>" /></b></font></td>
+	<td colspan="2">Firstname: <font size="+1"><b><input type="text" name="firstname" value="<?php echo "$firstname";?>" /></b></font></td>
     <td align="right">M.R.No</td>
 	<td><input name="mrno" type="text" class="textbox2" width="200" value="<?php echo "$mrno"?>"></td>
 </tr>
 
 <tr>
-	<td colspan="2">Lastname: <font size="+1"><b><input type="text" name="lastname" value="<?php echo "$lastname"; ?>" /></b></font></td>
-    <td>Age: <font size="+1"><b><input type="text" width="100" name="age" value="<?php echo "$age"; ?>" /></b></font></td>
-    <td>HMO No.: <font size="+1"><b><input type="text" width="100" name="hmono" value="<?php echo "$hmono"; ?>" /></b></font></td>
+	<td colspan="2">Lastname: <font size="+1"><b><input type="text" name="lastname" value="<?php echo "$lastname";?>" /></b></font></td>
+    <td>Age: <font size="+1"><b><input type="text" width="100" name="age" value="<?php echo "$age";?>" /></b></font></td>
+    <td>HMO No.: <font size="+1"><b><input type="text" width="100" name="hmono" value="<?php echo "$hmono";?>" /></b></font></td>
 </tr>
 <tr>
-	<td colspan="2">HMO Name: <font size="+1"><b><input type="text" name="hmoname" value="<?php echo "$hmoname"; ?>" /></b></font></td>
+	<td colspan="2">HMO Name: <font size="+1"><b><input type="text" name="hmoname" value="<?php echo "$hmoname";?>" /></b></font></td>
     <td align="right">Cell No.</td>
-    <td><font size="+1"><b><input type="text" width="100" name="cellno" value="<?php echo "$cellno"; ?>" /></b></font></td>
+    <td><font size="+1"><b><input type="text" width="100" name="cellno" value="<?php echo "$cellno";?>" /></b></font></td>
 </tr>
 <tr>
 	<td>Date:</td>
@@ -224,12 +223,12 @@ if(!isset($_SESSION['id'])){
         <option value="1901">1901</option>
         <option value="1900">1900</option>
       </select></td>
-    <td>RN: <input type="text" name="rno" value="<?php echo "fe".rand(1000, 9999); ?>" /></td>
+    <td>RN: <input type="text" name="rno" value="<?php echo "fe" . rand(1000, 9999);?>" /></td>
 </tr>
 <tr>
 	<td>Complaint:</td>
     <td colspan="2"><textarea name="complaint" type="text" class="textfieldComp" rows="5" cols="45"></textarea></td>
-    <td><input type="hidden" width="100" name="sex" value="<?php echo"$sex";?>" /><input type="hidden" width="100" name="address" value="<?php echo"$address";?>" />&nbsp;</td>
+    <td><input type="hidden" width="100" name="sex" value="<?php echo "$sex";?>" /><input type="hidden" width="100" name="address" value="<?php echo "$address";?>" />&nbsp;</td>
 </tr>
 
 <tr>

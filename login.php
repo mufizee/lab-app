@@ -1,19 +1,19 @@
 <?php
-	session_start();
-	if(isset($_SESSION['id'])){
-		Header('Location: index.php');
-	}
+session_start();
+if (isset($_SESSION['id'])) {
+	Header('Location: index.php');
+}
 
-	if($_POST['username']){
-		include_once "connect_to_mysql.php";
-		$username = stripslashes($_POST['username']);
-		$password = ereg_replace("[^A-Za-z0-9]", "", $_POST['password']);
-		//$password = md5($password);
-	
-	$sql = mysql_query("SELECT * FROM staff WHERE username ='$username' AND password='$password'");
+if ($_POST['username']) {
+	include_once "connect_to_mysql.php";
+	$username = stripslashes($_POST['username']);
+	$password = ereg_replace("[^A-Za-z0-9]", "", $_POST['password']);
+	//$password = md5($password);
+
+	$sql         = mysql_query("SELECT * FROM staff WHERE username ='$username' AND password='$password'");
 	$login_check = mysql_num_rows($sql);
-	if($login_check > 0){
-		while($row = mysql_fetch_array($sql)){
+	if ($login_check > 0) {
+		while ($row = mysql_fetch_array($sql)) {
 			//Get member ID into a session variable
 			$id = $row["id"];
 			session_register('id');
@@ -27,17 +27,17 @@
 			//echo "Welcome $username";
 			header('Location: index.php');
 			exit();
-		}// close the while loop
-	}else{
+		} // close the while loop
+	} else {
 		//print login failure message and link back to the login page
 		echo '<br />No match in our database, please try again<br /><br />';
 		//Header('Location: login.php');
 		//exit();
 	}
-	}
+}
 
 ?>
-	
+
 <!DOCTYPE html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -59,7 +59,7 @@ $(function () {
 			});
 		});
 	}
-	
+
 	$("a").click(function(){
 		$('a.current').removeClass('current');
 		$(this).addClass('current');
@@ -67,7 +67,7 @@ $(function () {
 		return false;
 	});
 	//ajaxify('login.php');
-});		
+});
 </script>-->
 </head>
 

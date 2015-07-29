@@ -1,81 +1,69 @@
 <?php
-$errorMsg = "";
-$username = "";
-$password = "";
-$cpassword = "";
-$firstname = "";
+$errorMsg   = "";
+$username   = "";
+$password   = "";
+$cpassword  = "";
+$firstname  = "";
 $middlename = "";
-$lastname = "";
-$month = "";
-$day = "";
-$year = "";
-$Gender = "";
-$level = "";
-$phone = "";
-$phone2 = "";
-$nextofKin = "";
-$nokPhone = "";
-$mstat = "";
-$spouse = "";
+$lastname   = "";
+$month      = "";
+$day        = "";
+$year       = "";
+$Gender     = "";
+$level      = "";
+$phone      = "";
+$phone2     = "";
+$nextofKin  = "";
+$nokPhone   = "";
+$mstat      = "";
+$spouse     = "";
 
-	if($_POST['username'])
-	{
-		include_once "connect_to_mysql.php";
-		$username = $_POST['username'];
-		$password = $_POST['password'];
-		$cpassword = $_POST['cpassword'];
-		$firstname = $_POST['firstname'];
-		$middlename = $_POST['middlename'];
-		$lastname = $_POST['lastname'];
-		$phone = $_POST['phone1'];
-		$phone2 = $_POST['phone2']; 
-		$nextofKin = $_POST['nextofkin'];
-		$nokPhone = $_POST['nextphone'];
-		$spouse = $_POST['spousename'];
-		$month = $_POST['month'];
-		$day = $_POST['day'];
-		$year = $_POST['YYYY'];
-		$Gender = $_POST['gender'];
-		$level = $_POST['level'];
-		$mstat = $_POST['mstats'];
-		
-		if ((!$username) || (!$firstname) || (!$lastname) || (!$phone) || (!$password) || ($password != $cpassword) || (!$month) || (!$day) || (!$year))
-		 {
-			$errorMsg = "You did not fill the following required information!<br />";
-			if (!$username){
-				$errorMsg .= "-- Username";}
-			else if (!$password){
-				$errorMsg .= "-- Password";}
-			else if($password != $cpassword){
-				$errorMsg .= "-- Password Mis-match.";}
-			else if	(!$firstname){
-				$errorMsg .= "-- firstname";	
-			}
-			else if (!$lastname){
-				$errorMsg .= "-- lastname";
-			}
-			else if	(!$month){
-				$errorMsg .= "-- Month of Birth";	
-			}
-			else if (!$day){
-				$errorMsg .= "-- Day of Birth";
-			}
-			else if (!$year) {
-				$errorMsg .= "-- Year of Birth.";
-			}
-			else if (!$phone) {
-				$errorMsg .= "-- Phone no.";
-			}
-			
-		}else
-		{
-			$sql_username_check = mysql_query("SELECT id FROM staff WHERE username='$username' LIMIT 1");
-			$username_check = mysql_num_rows($sql_username_check);
-			if ($username_check > 0){ 
-		$errorMsg = "<u>ERROR:</u><br />Your User Name is already in use inside our system. Please try another.";}
-		else {
-		// Add MD5 Hash to the password variable
-       $hashedPass = md5($password); 
+if ($_POST['username']) {
+	include_once "connect_to_mysql.php";
+	$username   = $_POST['username'];
+	$password   = $_POST['password'];
+	$cpassword  = $_POST['cpassword'];
+	$firstname  = $_POST['firstname'];
+	$middlename = $_POST['middlename'];
+	$lastname   = $_POST['lastname'];
+	$phone      = $_POST['phone1'];
+	$phone2     = $_POST['phone2'];
+	$nextofKin  = $_POST['nextofkin'];
+	$nokPhone   = $_POST['nextphone'];
+	$spouse     = $_POST['spousename'];
+	$month      = $_POST['month'];
+	$day        = $_POST['day'];
+	$year       = $_POST['YYYY'];
+	$Gender     = $_POST['gender'];
+	$level      = $_POST['level'];
+	$mstat      = $_POST['mstats'];
+
+	if ((!$username) || (!$firstname) || (!$lastname) || (!$phone) || (!$password) || ($password != $cpassword) || (!$month) || (!$day) || (!$year)) {
+		$errorMsg = "You did not fill the following required information!<br />";
+		if (!$username) {
+			$errorMsg .= "-- Username";} else if (!$password) {
+			$errorMsg .= "-- Password";} else if ($password != $cpassword) {
+			$errorMsg .= "-- Password Mis-match.";} else if (!$firstname) {
+			$errorMsg .= "-- firstname";
+		} else if (!$lastname) {
+			$errorMsg .= "-- lastname";
+		} else if (!$month) {
+			$errorMsg .= "-- Month of Birth";
+		} else if (!$day) {
+			$errorMsg .= "-- Day of Birth";
+		} else if (!$year) {
+			$errorMsg .= "-- Year of Birth.";
+		} else if (!$phone) {
+			$errorMsg .= "-- Phone no.";
+		}
+
+	} else {
+		$sql_username_check = mysql_query("SELECT id FROM staff WHERE username='$username' LIMIT 1");
+		$username_check     = mysql_num_rows($sql_username_check);
+		if ($username_check > 0) {
+			$errorMsg = "<u>ERROR:</u><br />Your User Name is already in use inside our system. Please try another.";} else {
+			// Add MD5 Hash to the password variable
+			$hashedPass = md5($password);
 
 			$sql = mysql_query("INSERT INTO staff (id, username, password, firstname, middlename, lastname, DOB, Gender, level, phone, phone2, nextofkin, nokphone, marritalStats, spouse, Time) VALUES (NULL, '$username', '$password', '$firstname', '$middlename', '$lastname', '$year/$month/$day', '$Gender', '$level', '$phone', '$phone2', '$nextofKin', '$nokPhone', '$mstat', '$spouse', CURRENT_TIMESTAMP)") or die(mysql_error());
 			//print success message if login successful then exit the script
@@ -85,48 +73,48 @@ $spouse = "";
 			exit();
 		}
 	}
-}	
+}
 ?>
 <div>
 <p>Please Fill in all fields with asterisks </p>
-<p>&nbsp;<font color="#FF0000"><?php echo"$errorMsg"; ?></font></p>
+<p>&nbsp;<font color="#FF0000"><?php echo "$errorMsg";?></font></p>
 <form action="staffreg.php" method="post" enctype="multipart/form-data">
-<table cellspacing="10">  
-  
+<table cellspacing="10">
+
   	<tr>
     	<td width="125">Username</td>
-        <td width="297"><input type="text" name="username" width="200" class="textbox2" maxlength="15" value="<?php echo"$username"; ?>"/> 
+        <td width="297"><input type="text" name="username" width="200" class="textbox2" maxlength="15" value="<?php echo "$username";?>"/>
           &nbsp;*</td>
     </tr>
     <tr>
     	<td>Password</td>
-        <td><input type="password" name="password" width="200" class="textbox2" maxlength="15" value="<?php echo"$password"; ?>" />
+        <td><input type="password" name="password" width="200" class="textbox2" maxlength="15" value="<?php echo "$password";?>" />
         &nbsp;*</td>
     </tr>
     <tr>
     	<td>confirm-password</td>
-        <td><input type="password" name="cpassword" width="200" class="textbox2" maxlength="15" value="<?php echo"$cpassword"; ?>"/> 
+        <td><input type="password" name="cpassword" width="200" class="textbox2" maxlength="15" value="<?php echo "$cpassword";?>"/>
           &nbsp;*</td>
     </tr>
     <tr>
     	<td>Firstname</td>
-        <td><input type="text" name="firstname" width="200" class="textbox2" maxlength="20" value="<?php echo"$firstname"; ?>"/>
+        <td><input type="text" name="firstname" width="200" class="textbox2" maxlength="20" value="<?php echo "$firstname";?>"/>
         &nbsp;*</td>
     </tr>
     <tr>
     	<td>Middlename</td>
-        <td><input type="text" name="middlename" width="200" class="textbox2" maxlength="20" value="<?php echo"$middlename"; ?>"/></td>
+        <td><input type="text" name="middlename" width="200" class="textbox2" maxlength="20" value="<?php echo "$middlename";?>"/></td>
     </tr>
     <tr>
     	<td>Lastname</td>
-        <td><input type="text" name="lastname" width="200" class="textbox2" maxlength="20" value="<?php echo"$lastname"; ?>"/>
+        <td><input type="text" name="lastname" width="200" class="textbox2" maxlength="20" value="<?php echo "$lastname";?>"/>
         &nbsp;*</td>
     </tr>
     <tr>
     	<td>Date of Birth</td>
         <td>
         <select name="month" class="textbox3">
-        <option value="<?php echo"$month"; ?>" selected="selected"><?php echo"$month"; ?></option>
+        <option value="<?php echo "$month";?>" selected="selected"><?php echo "$month";?></option>
         <option value="1">January</option>
       <option value="2">February</option>
       <option value="3">March</option>
@@ -140,9 +128,9 @@ $spouse = "";
       <option value="11">November</option>
       <option value="12">December</option>
       </select>
-      
+
         <select name="day" class="textbox3">
-        <option value="<?php echo"$day"; ?>" selected="selected"><?php echo"$day"; ?></option>
+        <option value="<?php echo "$day";?>" selected="selected"><?php echo "$day";?></option>
         <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -175,9 +163,9 @@ $spouse = "";
       <option value="30">30</option>
       <option value="31">31</option>
       </select>
-      
+
       <select name="YYYY" class="textbox3">
-      <option value="<?php echo"$year"; ?>" selected="selected"><?php echo"$year"; ?></option>
+      <option value="<?php echo "$year";?>" selected="selected"><?php echo "$year";?></option>
 
   <option value="2012">2012</option>
 
@@ -430,37 +418,37 @@ Female </td>
     </tr>
     <tr>
     	<td>Phone No.</td>
-        <td><input type="text" name="phone1" width="200" class="textbox2" maxlength="14" value="<?php echo"$phone"; ?>"/>
+        <td><input type="text" name="phone1" width="200" class="textbox2" maxlength="14" value="<?php echo "$phone";?>"/>
         &nbsp;*</td>
     </tr>
     <tr>
     	<td>Phone No. 2</td>
-        <td><input type="text" name="phone2" width="200" class="textbox2" maxlength="14" value="<?php echo"$phone2"; ?>" /></td>
+        <td><input type="text" name="phone2" width="200" class="textbox2" maxlength="14" value="<?php echo "$phone2";?>" /></td>
     </tr>
       	<tr>
     	<td width="125">Next of kin</td>
-        <td width="297"><input type="text" name="nextofkin" width="200" class="textbox2" maxlength="25" value="<?php echo"$nextofKin"; ?>"/></td>
+        <td width="297"><input type="text" name="nextofkin" width="200" class="textbox2" maxlength="25" value="<?php echo "$nextofKin";?>"/></td>
     </tr>
     <tr>
     	<td>Next of Kin's phone</td>
-        <td><input type="text" name="nextphone" width="200" class="textbox2" maxlength="14" value="<?php echo"$nokPhone"; ?>"/></td>
+        <td><input type="text" name="nextphone" width="200" class="textbox2" maxlength="14" value="<?php echo "$nokPhone";?>"/></td>
     <tr>
     	<td>Marital Status</td>
         <td><select name="mstats" class="textbox3" >
-        <option value="<?php echo"$mstat"; ?>"><?php echo"$mstat"; ?></option>
+        <option value="<?php echo "$mstat";?>"><?php echo "$mstat";?></option>
         <option value="married">Married</option>
         <option value="single">Single</option>
         <option value="divorced">Divorced</option></select></td>
     </tr>
     <tr>
     	<td>Spouse name</td>
-        <td><input type="text" name="spousename" width="200" class="textbox2" value="<?php echo"$spouse"; ?>"/></td>
+        <td><input type="text" name="spousename" width="200" class="textbox2" value="<?php echo "$spouse";?>"/></td>
     </tr>
     <tr>
     	<td>&nbsp;</td>
         <td><input type="submit" value="Submit"> &nbsp; <input type="reset" value="Reset" /></td>
     </tr>
-    
+
   </table>
 </form>
 <br>

@@ -1,34 +1,31 @@
 <?php
 session_start();
 $id = $_SESSION['id'];
-if(!isset($_SESSION['id'])){
-		Header('Location: login.php');	}
-		
-	
-	include_once "connect_to_mysql.php";	
-	$mrno = $_POST['mrno'];
-	$patient = mysql_query("Select * from patients where mrno = '$mrno'");
-	while ($row = mysql_fetch_array($patient))
-	{
-		$firstname = $row['firstname'];
-		$id = $row['id'];
-		$lastname = $row['lastname'];
-		$mrno = $row['mrno'];
-		$DOB = $row['DOB'];
-		$age = $row['age'];
-		$address = $row['address'];
-		$occupation = $row['occupation'];
-		$cell = $row['cellno'];
-		$other = $row['otherno'];
-		$mrno = $row['mrno'];
-		$hmoname = $row['hmo_name'];
-		$hmono = $row['hmo_no'];
-		$rh = $row['ref_hospital'];
-		$company = $row['company'];
-		$ac = $row['auth_code'];
-	}
-		
-		   
+if (!isset($_SESSION['id'])) {
+	Header('Location: login.php');}
+
+include_once "connect_to_mysql.php";
+$mrno    = $_POST['mrno'];
+$patient = mysql_query("Select * from patients where mrno = '$mrno'");
+while ($row = mysql_fetch_array($patient)) {
+	$firstname  = $row['firstname'];
+	$id         = $row['id'];
+	$lastname   = $row['lastname'];
+	$mrno       = $row['mrno'];
+	$DOB        = $row['DOB'];
+	$age        = $row['age'];
+	$address    = $row['address'];
+	$occupation = $row['occupation'];
+	$cell       = $row['cellno'];
+	$other      = $row['otherno'];
+	$mrno       = $row['mrno'];
+	$hmoname    = $row['hmo_name'];
+	$hmono      = $row['hmo_no'];
+	$rh         = $row['ref_hospital'];
+	$company    = $row['company'];
+	$ac         = $row['auth_code'];
+}
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -45,13 +42,13 @@ if(!isset($_SESSION['id'])){
   <table cellspacing="5" cellpadding="5">
     <tr>
       <td>MRNo:</td>
-      <td><input name="mrno" type="text" class="textbox2" width="200" maxlength="15" value="<?php echo "$mrno"; ?>" /></td>
+      <td><input name="mrno" type="text" class="textbox2" width="200" maxlength="15" value="<?php echo "$mrno";?>" /></td>
       <td>No of Items</td>
-      <td>Name:&nbsp;&nbsp;&nbsp;<input name="pname" type="text" class="textbox2" width="200" value="<?php echo"$firstname $lastname";?>" /></td>
+      <td>Name:&nbsp;&nbsp;&nbsp;<input name="pname" type="text" class="textbox2" width="200" value="<?php echo "$firstname $lastname";?>" /></td>
     </tr>
     <tr>
       <td>Reciept no.</td>
-      <td><input name="rno" type="text" class="textbox2" width="80" value="<?php echo"FEC". rand(1000, 9999); ?>" /></td>
+      <td><input name="rno" type="text" class="textbox2" width="80" value="<?php echo "FEC" . rand(1000, 9999);?>" /></td>
       <td></td>
       <td></td>
     </tr>
@@ -59,17 +56,17 @@ if(!isset($_SESSION['id'])){
     <td>HMO Name</td>
     <td>
     <?php
-	include_once "connect_to_mysql.php";
-	
-	$hmoselect = @mysql_query("select hmo from eyeclinic.hmo");
-	
-	echo "<select name=\"hmo\" class=\"textboxX\">";
-	while ($row = mysql_fetch_assoc($hmoselect)){
-		$hmonames = $row['hmo'];
-		echo "<option value=$hmonames>$hmonames</option>";
-	}
-	echo "</select>";
-	?>
+include_once "connect_to_mysql.php";
+
+$hmoselect = @mysql_query("select hmo from eyeclinic.hmo");
+
+echo "<select name=\"hmo\" class=\"textboxX\">";
+while ($row = mysql_fetch_assoc($hmoselect)) {
+	$hmonames = $row['hmo'];
+	echo "<option value=$hmonames>$hmonames</option>";
+}
+echo "</select>";
+?>
     </td>
     </tr>
     <tr>
@@ -125,17 +122,17 @@ if(!isset($_SESSION['id'])){
       <td>Frame</td>
       <td><!--<input name="frame" type="text" class="textbox2" width="200" maxlength="15" />-->
       <?php
-	include_once "connect_to_mysql.php";
-	
-	$frameselect = @mysql_query("select item_name from eyeclinic.stock where item_type = 'frame'");
-	
-	echo "<select name=\"frame\" class=\"textboxX\">";
-	while ($row = mysql_fetch_assoc($frameselect)){
-		$framenames = $row['item_name'];
-		echo "<option value=$framenames>$framenames</option>";
-	}
-	echo "</select>";
-	?>
+include_once "connect_to_mysql.php";
+
+$frameselect = @mysql_query("select item_name from eyeclinic.stock where item_type = 'frame'");
+
+echo "<select name=\"frame\" class=\"textboxX\">";
+while ($row = mysql_fetch_assoc($frameselect)) {
+	$framenames = $row['item_name'];
+	echo "<option value=$framenames>$framenames</option>";
+}
+echo "</select>";
+?>
       </td>
       <td><select name="frameno" class="textbox3">
       	<option value="0" selected="selected">0</option>
@@ -166,17 +163,17 @@ if(!isset($_SESSION['id'])){
     <td>Drug</td>
       <td><!--<input name="frame" type="text" class="textbox2" width="200" maxlength="15" />-->
       <?php
-	include_once "connect_to_mysql.php";
-	
-	$Drugselect = @mysql_query("select item_name from eyeclinic.stock where item_type = 'Drug'");
-	
-	echo "<select name=\"drug\" class=\"textboxX\">";
-	while ($row = mysql_fetch_assoc($Drugselect)){
-		$Drugnames = $row['item_name'];
-		echo "<option value=$Drugnames>$Drugnames</option>";
-	}
-	echo "</select>";
-	?>
+include_once "connect_to_mysql.php";
+
+$Drugselect = @mysql_query("select item_name from eyeclinic.stock where item_type = 'Drug'");
+
+echo "<select name=\"drug\" class=\"textboxX\">";
+while ($row = mysql_fetch_assoc($Drugselect)) {
+	$Drugnames = $row['item_name'];
+	echo "<option value=$Drugnames>$Drugnames</option>";
+}
+echo "</select>";
+?>
       </td>
       <td><select name="drugno" class="textbox3">
       	<option value="0" selected="selected">0</option>

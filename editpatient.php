@@ -8,7 +8,7 @@
 <form method="post" action="edit.php">
 <table cellspacing="5">
 <tr>
-<td>Enter Patient's Mrno:</td> 
+<td>Enter Patient's Mrno:</td>
 <td> <input type="text" name="mrno" class="textbox2" /></td>
 </tr>
 <tr>

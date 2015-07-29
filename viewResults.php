@@ -1,9 +1,9 @@
 <?php
 session_start();
 $id = $_SESSION['id'];
-if(!isset($_SESSION['id'])){
-		Header('Location: login.php');
-	}
+if (!isset($_SESSION['id'])) {
+	Header('Location: login.php');
+}
 ?>
 
 <p><b>NB: Please use only one of the following:</b><br />

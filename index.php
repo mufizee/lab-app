@@ -1,13 +1,13 @@
 <?php
-	session_start();
-	$_SESSION['id'] = "1";
-	$_SESSION['username'] = "muna"; 
-	/*if(!isset($_SESSION['id'])){
-		Header('Location: login.php');
-	}else{
-		$userid = $_SESSION['id'];
-		$username = $_SESSION['username'];
-	}*/
+session_start();
+$_SESSION['id']       = "1";
+$_SESSION['username'] = "muna";
+/*if(!isset($_SESSION['id'])){
+Header('Location: login.php');
+}else{
+$userid = $_SESSION['id'];
+$username = $_SESSION['username'];
+}*/
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,7 +19,7 @@
 <script type="text/javascript">
 //1. The basic jquery syntax, it tells the browser to execute the codes inside the brackets only if the DOM is ready for any modification that's going to be made by the scripts
 $(function () {
-	//2. Procedure block declaration to handle the onclick method (@ #11 & #13), param (string) the URL to 
+	//2. Procedure block declaration to handle the onclick method (@ #11 & #13), param (string) the URL to
 	function ajaxify(file){
 		//3.create a new div element with class "loading", add the HTML sting into it, then add itself as a child of body and fade it in (take a look at stylesheet declaration, we set the display attribute to "none")
 		$('div id="loading"></div>').html("Loading Content: "+file+"...").appendTo('body').fadeIn();
@@ -35,7 +35,7 @@ $(function () {
 			});
 		});
 	}
-	
+
 	//8. Anchor inside the selector pattern on click
 	$("a").click(function(){
 		//$("div#nav ul li a").click(function(){
@@ -51,7 +51,7 @@ $(function () {
 	});
 	//13 For the first loaded index.html, tell the browser to load the homepage.html via ajax;
 	ajaxify('home.php');
-});		
+});
 </script>
 <link href="css/layout.css" rel="stylesheet" type="text/css" />
 </head>
@@ -103,31 +103,30 @@ $(function () {
   <br />
 <br />
 </p>
-  
-	<?php 
-	include_once "connect_to_mysql.php";
-		$month = date("m");
-		$day = date("d");
-		echo "<font color='#006699'>&nbsp;&nbsp;Birthdays this Month</font>";
-		echo "<br /><br />";
-		$bdays = mysql_query("Select * from patients where Month like '$month'");
-		//$check_bday = mysql_num_rows($bdays);
-		//if($check_bday > 0)
-		//{
-			
-			while ($row = mysql_fetch_array($bdays))
-			{
-				$shout = $row['bday'];
-				
-				echo "<table><tr>";
-				echo "<td class='bdays'>". $row['firstname']. " " . $row['lastname']."</td>";
-				echo "<td class='date'>". $row['DOB']."</td>";
-				echo "<td>"; if ($shout == $day){echo "<span class='today'>Today</span>";}
-				echo "</td>";
-				echo"</tr></table>";
-			}
-			//mysql_close(mysql_connect);
-	?>
+
+	<?php
+include_once "connect_to_mysql.php";
+$month = date("m");
+$day   = date("d");
+echo "<font color='#006699'>&nbsp;&nbsp;Birthdays this Month</font>";
+echo "<br /><br />";
+$bdays = mysql_query("Select * from patients where Month like '$month'");
+//$check_bday = mysql_num_rows($bdays);
+//if($check_bday > 0)
+//{
+
+while ($row = mysql_fetch_array($bdays)) {
+	$shout = $row['bday'];
+
+	echo "<table><tr>";
+	echo "<td class='bdays'>" . $row['firstname'] . " " . $row['lastname'] . "</td>";
+	echo "<td class='date'>" . $row['DOB'] . "</td>";
+	echo "<td>";if ($shout == $day) {echo "<span class='today'>Today</span>";}
+	echo "</td>";
+	echo "</tr></table>";
+}
+//mysql_close(mysql_connect);
+?>
 </p>
 </div>
 <!--end of div links-->

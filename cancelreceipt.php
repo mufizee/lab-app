@@ -1,27 +1,27 @@
 <?php
 session_start();
 $id = $_SESSION['id'];
-if(!isset($_SESSION['id'])){
-		Header('Location: login.php');
-	}
+if (!isset($_SESSION['id'])) {
+	Header('Location: login.php');
+}
 
-	include_once "connect_to_mysql.php";
+include_once "connect_to_mysql.php";
 
 $mrno = "";
-$rno = "";
-//check to see if form has been submitted. 
-if (isset($_POST['mrno'])){
+$rno  = "";
+//check to see if form has been submitted.
+if (isset($_POST['mrno'])) {
 // assign values to the initialized variables
-$mrno = $_POST['mrno'];
-$rno = $_POST['rno'];
+	$mrno = $_POST['mrno'];
+	$rno  = $_POST['rno'];
 
 //if ($auth == "doc"){
-$sql = mysql_query("DELETE FROM bills where mrno = '$mrno' and rno = '$rno' ") or die (mysql_error());
-		echo "<div>Receipt Delete successful <p><a href = index.php>Click here</a> to return to portal</div>";
-		
-		// Update last_log_date field for this member now
-			$sql2 = mysql_query("INSERT INTO logs (personel, action, date, time) VALUES('$id', 'Deleted Receipt for $rno From Database', '$date' , CURRENT_TIMESTAMP)") or die(mysql_error());
-		exit();
+	$sql = mysql_query("DELETE FROM bills where mrno = '$mrno' and rno = '$rno' ") or die(mysql_error());
+	echo "<div>Receipt Delete successful <p><a href = index.php>Click here</a> to return to portal</div>";
+
+	// Update last_log_date field for this member now
+	$sql2 = mysql_query("INSERT INTO logs (personel, action, date, time) VALUES('$id', 'Deleted Receipt for $rno From Database', '$date' , CURRENT_TIMESTAMP)") or die(mysql_error());
+	exit();
 
 }
 ?>

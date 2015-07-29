@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `bills` (
 CREATE TABLE IF NOT EXISTS `logs` (
   `personel` varchar(50) NOT NULL,
   `action` varchar(255) NOT NULL,
-  `date` date NOT NULL,
+  `date` date NOT  NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
